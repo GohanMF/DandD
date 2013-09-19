@@ -43,10 +43,15 @@ namespace SignalHubs
 
         public override System.Threading.Tasks.Task OnDisconnected()
         {
-           
 
-
-
+            var item = ConnectedUsers.FirstOrDefault(x => x.connectionId == Context.ConnectionId);
+            if (item != null)
+            {
+                ConnectedUsers.Remove(item);
+                var id = Context.ConnectionId;
+                Clients.All.addNewMessageToPage(item.userName + " is offline" , "");
+                Clients.All.onUserDisconnected(id);
+            }
             return base.OnDisconnected();
         }
     }

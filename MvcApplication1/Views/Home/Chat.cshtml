@@ -147,7 +147,11 @@
                
             };
 
+            chat.client.onUserDisconnected = function (id, userName) {
 
+                $('#' + id).remove()
+
+            }
             //Calls when user successfuly logged in
             chat.client.onConnected = function (allUsers, messages) {
 
