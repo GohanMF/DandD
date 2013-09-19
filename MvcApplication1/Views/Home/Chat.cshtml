@@ -18,7 +18,7 @@
                 <div> </div>
                 <div><div class="someone"> </div> </div>
                 <div> </div>
-               <div> </div>
+                <div> </div>
                 <div> </div>
                 <div> </div>
                 <div> </div>
@@ -70,8 +70,8 @@
         </div>
     </div>
      <div class="col-xs-4 col-sm-3 col-md-3"  >
-        <div id="UserList" style="height: 290px; border : 1px solid #d5d5d5">
-            <div class="userOnline">
+        <div id="userList" style="height: 290px; border : 1px solid #d5d5d5">
+          <!--  <div class="userOnline">
                 <div style="width:40px"><img src="~/Images/orderedList9.png" alt="" /></div> <div style="display:inline"><a href="#">GohamMF</a></div>
             </div>
             <div  class="userOnline">
@@ -79,7 +79,7 @@
             </div>
             <div class="userOnline">
                 <div style="width:40px"><img src="~/Images/orderedList7.png" alt="" /></div><div style="display:inline" ><a href="#">Antonio Manuel dos Santos zezinhos</a></div>
-            </div>
+            </div> -->
         </div>
     </div> 
       
@@ -116,44 +116,73 @@
             var chat = $.connection.chatHub;
             // Regier clients methods
             
+            registerClientMethods(chat);
+            
+            // Start the connection.
+            $.connection.hub.start().done(function () {
+                // when users logged in correctly
+                chat.server.connect('@User.Identity.Name')
+                $('#sendmessage').click(function () {
+                    // Call the Send method on the hub. 
+                    var msg = $('#message').val();
+                    var name ='@User.Identity.Name'
+                    chat.server.sendMessageToAll(name, msg);
+                     // Clear text box and reset focus for next comment. 
+                    $('#message').val('').focus();
+
+                });
+
+            });
+            
+        });
+
+      
+
+        function registerClientMethods(chat) {
+
             // Create a function that the hub can call back to display messages.
             chat.client.addNewMessageToPage = function (name, message) {
                 // Add the message to the page. 
-                $('#discussion').append('<li><strong>' + htmlEncode(name) 
-                    + '</strong>: ' + htmlEncode(message) + '</li>');
+                AddMessage(name, message);
+               
             };
+
+
             //Calls when user successfuly logged in
-            chat.client.onConnected = function (id, userName, allUsers, messages)
-            {
+            chat.client.onConnected = function (allUsers, messages) {
 
+                for (i = 0 ; i < allUsers.length; i++) {
+                    AddUsers(allUsers[i].connectionId,allUsers[i].userName)
+                }
+                for (i = 0 ; i < messages.length; i++) {
+                    AddMessage(messages[i].userName, messages[i].message)
+                }
             };
+
             // on new User Connected
-            chat.client.onNewUserConnected = function(id, name){
-                $('#userlist').append('<div class="userOnline">'
-                + '<div style="width:40px"><img src="~/Images/orderedList9.png" alt="" /></div>'
-                + '<div style="display:inline"><a href="'+ id +'">'+ htmlEncode(name) +'</a></div>'
-                + '</div> '
-               );
+            chat.client.onNewUserConnected = function (id, name) {
+                AddUsers(id, name);
             };
-            // Get the user name and store it to prepend to messages.
-           // $('#displayname').val(prompt('Enter your name: ' , ''));
-            // Set initial focus to message input box.  
-          //  $('#message').focus();
-            // Start the connection.
-            $.connection.hub.start().done(function () {
 
-                chat.server.connect('@User.Identity.Name')
+        }
 
-                $('#sendmessage').click(function () {
-                    // Call the Send method on the hub. 
-                    chat.server.send('@User.Identity.Name' , $('#message').val());
-                    // Clear text box and reset focus for next comment. 
-                    $('#message').val('').focus();
-                });
-            });
-        });
-        // when users logged in correctly
-        registerClientsMethods()
+        function AddMessage(name, message) {
+
+            $('#discussion').append('<li><strong>' + htmlEncode(name)
+               + '</strong>: ' + htmlEncode(message) + '</li>');
+        }
+
+        function AddUsers(id, name) {
+            alert("dahdadadada")
+            $('#userList').append($('<div id="' + id + '" class="userOnline">'
+           + '<div style="width:40px"><img src="../Images/orderedList9.png" alt="" /></div>'
+           + '<div style="display:inline"><a href="#">' + name + '</a></div>'
+           + '</div>')
+          );
+        }
+
+       
+
         // This optional function html-encodes messages for display in the page.
         function htmlEncode(value) {
             var encodedValue = $('<div />').text(value).html();

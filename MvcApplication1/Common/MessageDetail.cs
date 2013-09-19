@@ -7,7 +7,7 @@ namespace chat.Common
 {
     public class MessageDetail
     {
-        public String UserName { get; set; }
-        public String Message { get; set; }
+        public String userName { get; set; }
+        public String message { get; set; }
     }
 }

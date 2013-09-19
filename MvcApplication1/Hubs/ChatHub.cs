@@ -15,20 +15,20 @@ namespace SignalHubs
        public void connect(string userName)
        {
 
-
+           
            var id = Context.ConnectionId;
 
-           if (ConnectedUsers.Count(x => x.ConnectionId == id) == 0)
+           if (ConnectedUsers.Count(x => x.connectionId == id) == 0)
            {
 
-               ConnectedUsers.Add(new UserDetail { ConnectionId = id, UserName = userName });
-               
-               Clients.Caller.onConnected(id, userName, ConnectedUsers, CurrentMessages);
+               ConnectedUsers.Add(new UserDetail { connectionId = id, userName = userName });
                Clients.AllExcept(id).onNewUserConnected(id, userName);
+               Clients.Caller.onConnected(ConnectedUsers, CurrentMessages);
+             
            }
        }
 
-        public void SendToAll(string name, string message)
+       public void SendMessageToAll(string name, string message)
         {
             //call the AddNewMessageToPage method to update clients.
             Clients.All.addNewMessageToPage(name, message);
