@@ -1,0 +1,56 @@
+﻿body, html, #main {
+    height: 100%;
+}
+
+#main {
+min-height:400px;
+padding-top: 55px;
+}
+
+.inline {
+display : inline;
+}
+.userOnline {
+    display:flex;
+    margin: 2.5px 5px;
+    clear:both;
+    
+}
+.userOnline > img {
+    height : 30px;
+    width:30px;
+}
+.userOnline > div {
+   
+    display : inline-block;
+}
+#discussion {
+list-style-type: none;
+margin:0;
+padding:0;
+}
+
+.board > div {
+    margin-bottom: -5px;
+    margin-right: -4px ;
+    padding:0px !important; 
+    border:1px solid black;
+    height:60px;
+    width:60px;
+    display:inline-block;
+}
+
+.someone {
+border-radius: 28px 28px 28px 28px; 
+margin-right: auto; 
+margin-bottom: 0px; 
+margin-left: auto; 
+border: 1px solid sienna; 
+height: 58px; width: 58px; 
+background-color: whitesmoke;
+}
+
+  
+
+
+
