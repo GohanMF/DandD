@@ -31,6 +31,17 @@
     <WarningLevel>4</WarningLevel>
     <IncludeIisSettings>true</IncludeIisSettings>
     <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="DefaultConnection-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Server=1a4e2da7-f038-49f3-813f-a23e00f9004b.sqlserver.sequelizer.com%3bDatabase=db1a4e2da7f03849f3813fa23e00f9004b%3bUser ID=gdnjctcinkmgjcgq%3bPassword=oF7CQcRjDAzXZcPRmR7WYsPm8kjTk7KV3N8xbJsmxuZLtqACRUdNhAW5ZUDDZ78E%3bIntegrated Security=True%3bUser Instance=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\DefaultConnection-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
