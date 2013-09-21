@@ -3,8 +3,8 @@
 }
 
 <div class="row" style="height:70%">
-    <div class="col-xs-8 col-sm-9 col-md-9">
-        <div  style="height:290px; width:100%; border:1px solid black; overflow:auto ; background-color:gray">
+    <div class="col-xs-8 col-sm-9 col-md-9" style="height:100%">
+        <div  style="height:100%; width:100%; border:1px solid black; overflow:auto ; background-color:gray">
            <div class="board" style="width:720px; height:300px; margin:10px; background-color:lightblue">
                 <div> </div>
                 <div> </div>
@@ -16,7 +16,7 @@
                 <div> </div>
                 <div> </div>
                 <div> </div>
-                <div><div class="someone"> </div> </div>
+                <div><div class="someone " > </div> </div>
                 <div> </div>
                 <div> </div>
                 <div> </div>
@@ -69,7 +69,7 @@
             </div>
         </div>
     </div>
-     <div class="col-xs-4 col-sm-3 col-md-3"  >
+    <div class="col-xs-4 col-sm-3 col-md-3"  >
         <div id="userList" style="height: 290px; border : 1px solid #d5d5d5">
           <!--  <div class="userOnline">
                 <div style="width:40px"><img src="~/Images/orderedList9.png" alt="" /></div> <div style="display:inline"><a href="#">GohamMF</a></div>
@@ -93,12 +93,12 @@
             <ul id="discussion"></ul>
         </div>
         <div style="height:30px; margin-top:10px" class="row" >
-            <div style="display:inline" class="col-md-10">
-                <input type="text" id= "message" style="width:100%" />
-            </div>
-            <div style="display:inline ; margin-right:20px " class="pull-right">
-                <input type="button" class="btn btn-sm" id="sendmessage" value="send" />
-            </div>
+                <div style="display:inline" class="col-md-10 col-sm-9 col-xs-10">
+                    <input type="text" id= "message" style="width:100%" placeholder="Insert tou text"  />
+                </div>
+                <div style="display:inline ; margin-right:20px " class="pull-right">
+                    <input type="button" class="btn btn-sm" id="sendmessage" value="send" />
+                </div>
         </div>
     </div>
 </div>
@@ -174,6 +174,7 @@
 
             $('#discussion').append('<li><strong>' + htmlEncode(name)
                + '</strong>: ' + htmlEncode(message) + '</li>');
+            ($('#discussion').parent()).scrollTop($('#discussion').height())
         }
 
         function AddUsers(id, name) {
@@ -192,5 +193,15 @@
             var encodedValue = $('<div />').text(value).html();
             return encodedValue;
         }
+
+        $("#message").keyup( function(event){
+        
+            if(event.keyCode == 13){
+            
+                $("#sendmessage").click();
+            }
+        }); 
+        
+        
     </script>
     }
