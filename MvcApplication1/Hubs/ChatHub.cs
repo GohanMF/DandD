@@ -22,7 +22,7 @@ namespace SignalHubs
            {
 
                ConnectedUsers.Add(new UserDetail { connectionId = id, userName = userName });
-               Clients.AllExcept(id).onNewUserConnected(id, userName);
+               Clients.Others.onNewUserConnected(id, userName);
                Clients.Caller.onConnected(ConnectedUsers, CurrentMessages);
              
            }
@@ -31,7 +31,8 @@ namespace SignalHubs
        public void SendMessageToAll(string name, string message)
         {
             //call the AddNewMessageToPage method to update clients.
-            Clients.All.addNewMessageToPage(name, message);
+            CurrentMessages.Add(new MessageDetail { message = message, userName = name });
+           Clients.All.addNewMessageToPage(name, message);
      
         }
 
