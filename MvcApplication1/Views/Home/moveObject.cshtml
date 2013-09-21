@@ -15,10 +15,77 @@
 
 </style>
 
-<div id="shape1" class="shape">
+<div id="shape1" class="shape draggable">
 </div>
-<div id="shape2" class="shape">
+<div id="shape2" class="shape draggable">
 </div>
+
+<div class="board" style="width:720px; height:300px; margin:10px; background-color:lightblue">
+               <div id="a1" class="droppable"> </div>
+                <div id="a2"  class="droppable"> </div>
+                <div id="a3"  class="droppable"> </div>
+                <div id="a5"  class="droppable"> </div>
+                <div id="a6"  class="droppable"> </div>
+                <div id="a7"  class="droppable"> </div>
+                <div id="a8"  class="droppable"> </div>
+                <div id="a9"  class="droppable"> </div>
+                <div id="a10"  class="droppable"> </div>
+                <div id="a11"  class="droppable"> </div>
+                <div id="a12"  class="droppable"> </div>
+                <div id="b1"  class="droppable"> </div>
+                <div id="b2"  class="droppable"> </div>
+                <div id="b3"  class="droppable"> </div>
+                <div id="b4"  class="droppable"> </div>
+                <div id="b5"  class="droppable"> </div>
+                <div id="b6"  class="droppable"> </div>
+                <div id="b7"  class="droppable"> </div>
+                <div id="b8"  class="droppable"> </div>
+                <div id="b9"><div class="someone " > </div> </div>
+                <div id="b10"  class="droppable"> </div>
+                <div id="b11"  class="droppable"> </div>
+                <div id="b12"  class="droppable"> </div>
+                <div id="c1"  class="droppable"> </div>
+                <div id="c2"  class="droppable"> </div>
+                <div id="c3"  class="droppable"> </div>
+                <div id="c4"  class="droppable"> </div>
+                <div id="c5"  class="droppable"> </div>
+                <div id="c6"  class="droppable"> </div>
+                <div id="c7"  class="droppable"> </div>
+                <div id="c8"  class="droppable"> </div>
+                <div id="c9"  class="droppable"> </div>
+                <div id="c10"  class="droppable"> </div>
+                <div id="c11"  class="droppable"> </div>
+                <div id="c12"  class="droppable"> </div>
+                <div id="d1"  class="droppable"> </div>
+                <div id="d2"  class="droppable"> </div>
+                <div id="d3"  class="droppable"> </div>
+                <div id="d4"  class="droppable"> </div>
+                <div id="d5"  class="droppable"> </div>
+                <div id="d6"  class="droppable"> </div>
+                <div id="d7"  class="droppable"> </div>
+                <div id="d8"  class="droppable"> </div>
+                <div id="d9"  class="droppable"> </div>
+                <div id="d10"  class="droppable"> </div>
+                <div id="d11"  class="droppable"> </div>
+                <div id="d12"  class="droppable"> </div>
+                <div id="e1"  class="droppable"> </div>
+                <div id="e2"  class="droppable"> </div>
+                <div id="e3"  class="droppable"> </div>
+                <div id="e4"  class="droppable"> </div>
+                <div id="e5"  class="droppable"> </div>
+                <div id="e6"  class="droppable"> </div>
+                <div id="e7"  class="droppable"> </div>
+                <div id="e8"  class="droppable"> </div>
+                <div id="e9"  class="droppable"> </div>
+                <div id="e10"  class="droppable"> </div>
+                <div id="e11"  class="droppable"> </div>
+                <div id="e12"  class="droppable"> </div>
+                <div id="e13"  class="droppable"> </div>
+
+           
+            
+            
+            </div>
 
 
 @section scripts{
@@ -54,15 +121,47 @@
               //  $shape.css({left : x , top : y})
             };
 
+            hub.client.objectInsertedDiv = function (idObj, idDiv ) {
+
+                $object = $("#" + idObj + "");
+                $div = $("#" + idDiv + "");
+                $object.appendTo($div).css({ left: 0, top: 0 });
+
+            };
+
+
+
+
             $.connection.hub.start().done(function () {
                 $shape.draggable({
-                    drag: function () {
+                    revert: "invalid" ,
+                drag: function () {
                         hub.server.moveObject(this.id, this.offsetLeft, this.offsetTop || 0)
                     }
                 })
 
+                $(".droppable").droppable({
+                    activeClass: "ui-state-hover",
+                    hoverClass: "ui-state-active",
+                    drop: function (event, ui) {
+                        insertObjectDiv(ui.draggable, this.id)
+
+                    }
+                });
+
+                function insertObjectDiv($item, id) {
+                    $div = $("#" + id + "");
+                    $item.appendTo($div).css({ left: 0, top: 0 });
+                    hub.server.insertobjectintoDiv($item.attr('id'), id)
+
+                }
+
 
             })
+
+
+           
+
         })
 
     </script>

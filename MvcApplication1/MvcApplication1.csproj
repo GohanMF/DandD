@@ -213,6 +213,7 @@
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\mine.css" />
     <Compile Include="Common\MessageDetail.cs" />
+    <Compile Include="Common\Object.cs" />
     <Compile Include="Common\UserDetail.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

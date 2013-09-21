@@ -15,6 +15,9 @@ namespace MvcApplication1.Hubs
             Clients.Others.objectMoved(id,x, y);
         }
 
-         
+        public void InsertobjectintoDiv(string idObject, string idDiv)
+        {
+            Clients.Others.objectInsertedDiv(idObject, idDiv);
+        }
     }
 }
