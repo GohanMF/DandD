@@ -5,10 +5,11 @@ using System.Web;
 
 namespace chat.Common
 {
-    public class Object
+    public class allObjects
     {
         public String id { get; set; }
         public String cssClass { get; set; }
+        public String mypossition { get; set; }
 
     }
 }

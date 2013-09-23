@@ -15,15 +15,13 @@
 
 </style>
 
-<div id="shape1" class="shape draggable">
-</div>
-<div id="shape2" class="shape draggable">
-</div>
+
 
 <div class="board" style="width:720px; height:300px; margin:10px; background-color:lightblue">
                <div id="a1" class="droppable"> </div>
                 <div id="a2"  class="droppable"> </div>
                 <div id="a3"  class="droppable"> </div>
+                <div id="a4"  class="droppable"> </div>
                 <div id="a5"  class="droppable"> </div>
                 <div id="a6"  class="droppable"> </div>
                 <div id="a7"  class="droppable"> </div>
@@ -80,13 +78,16 @@
                 <div id="e10"  class="droppable"> </div>
                 <div id="e11"  class="droppable"> </div>
                 <div id="e12"  class="droppable"> </div>
-                <div id="e13"  class="droppable"> </div>
+                
 
            
             
             
             </div>
-
+<div id="shape1" class="shape draggable">
+</div>
+<div id="shape2" class="shape draggable">
+</div>
 
 @section scripts{
      <!--Script references. -->
@@ -114,10 +115,22 @@
 
             // functions that the server gonna call
 
+            chat.client.onConnected = function (allObjects) {
+
+                for (i = 0 ; i < allObjects.length; i++) {
+                   // AddUsers(allUsers[i].connectionId, allUsers[i].userName)
+                    //TODO 
+                    // if find object == undefind then 
+                    //     create new object 
+                    // else 
+                    //      give him all the atributes
+                }
+              
+            };
 
             hub.client.objectMoved = function (id, x, y) {
 
-                $("#" + id + "").css({ left: x, top: y })
+                $("#" + id + "").offset({ left: x, top: y })
               //  $shape.css({left : x , top : y})
             };
 
@@ -130,9 +143,11 @@
             };
 
 
-
+            // funtion that will runs when start 
 
             $.connection.hub.start().done(function () {
+
+                hub.server.connect()
                 $shape.draggable({
                     revert: "invalid" ,
                 drag: function () {
@@ -145,6 +160,7 @@
                     hoverClass: "ui-state-active",
                     drop: function (event, ui) {
                         insertObjectDiv(ui.draggable, this.id)
+                        
 
                     }
                 });
@@ -153,7 +169,7 @@
                     $div = $("#" + id + "");
                     $item.appendTo($div).css({ left: 0, top: 0 });
                     hub.server.insertobjectintoDiv($item.attr('id'), id)
-
+                    hub.server.especificPossition($item.attr('id'), $item.attr("class"), id)
                 }
 
 
