@@ -112,18 +112,36 @@
 
 
             // functions that the server gonna call
-
-           
-
-            hub.client.onConnected = function (allObjects) {
+            hub.client.loadallObjects = function (allObjects) {
 
                 for (i = 0 ; i < allObjects.length; i++) {
-                   // AddUsers(allUsers[i].connectionId, allUsers[i].userName)
-                    //TODO 
-                    // if find object == undefind then 
-                    //     create new object 
-                    // else 
-                    //      give him all the atributes
+                    if (allObjects[i].mypossition != null) {
+                        $('#' + allObjects[i].mypossition + '').append($('<div id="' + allObjects[i].id + '" class="' + allObjects[i].cssClass + '"> </div> '))
+
+                    } else {
+                        $('.newusers').append($('<div id="' + allObjects[i].id + '" class="' + allObjects[i].cssClass + '"> </div> '))
+                    }
+                }
+
+                $('#@User.Identity.Name').draggable({
+                    revert: "invalid",
+                    drag: function () {
+                        hub.server.moveObject(this.id, this.offsetLeft, this.offsetTop || 0)
+                    }
+                })
+
+            };
+           
+
+            hub.client.loadothersObjects = function (allObjects) {
+
+                for (i = 0 ; i < allObjects.length; i++) {
+                    if (allObjects[i].mypossition != null) {
+                        $('#' + allObjects[i].mypossition + '').append($('<div id="' + allObjects[i].id + '" class="' + allObjects[i].cssClass + '"> </div> '))
+
+                    } else {
+                        $('.newusers').append($('<div id="' + allObjects[i].id + '" class="' + allObjects[i].cssClass + '"> </div> '))
+                    }
                 }
               
             };
@@ -132,12 +150,29 @@
 
                 $('#' + userName).remove();
 
+            };
+
+
+            hub.client.newObject = function (username, css, possition) {
+                if (possition != null) {
+                    $('#' + possition + '').append($('<div id="' + username + '" class="' + css + '"> </div> '))
+
+                } else {
+                    $('.newusers').append($('<div id="' + username + '" class="' + css + '"> </div> '))
+                }
             }
 
+            hub.client.myObject = function (username, css) {
 
-            hub.client.newObject = function (username) {
+                $('.newusers').append($('<div id="' + username + '" class="' + css + '"> </div> '))
+               
+                $('#' + username + '').draggable({
+                    revert: "invalid",
+                    drag: function () {
+                        hub.server.moveObject(this.id, this.offsetLeft, this.offsetTop || 0)
+                    }
+                })
 
-                $('.newusers').append($('<div id="'+username+'" class="shape draggable"> </div> '))
             }
 
             hub.client.objectMoved = function (id, x, y) {
@@ -160,13 +195,7 @@
             $.connection.hub.start().done(function () {
 
                 hub.server.connect("@User.Identity.Name")
-                $("#@User.Identity.Name").draggable({
-                    revert: "invalid" ,
-                drag: function () {
-                        hub.server.moveObject(this.id, this.offsetLeft, this.offsetTop || 0)
-                    }
-                })
-
+                
                 $(".droppable").droppable({
                     activeClass: "ui-state-hover",
                     hoverClass: "ui-state-active",
