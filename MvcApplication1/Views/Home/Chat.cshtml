@@ -5,70 +5,71 @@
 <div class="row" style="height:70%">
     <div class="col-xs-8 col-sm-9 col-md-9" style="height:100%">
         <div  style="height:100%; width:100%; border:1px solid black; overflow:auto ; background-color:gray">
-           <div class="board" style="width:720px; height:300px; margin:10px; background-color:lightblue">
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div><div class="someone " > </div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div>
-                <div> </div> 
+            <div class="board" style="width:720px; height:300px; margin:10px; background-color:lightblue">
+               <div id="a1" class="droppable"> </div>
+                <div id="a2"  class="droppable"> </div>
+                <div id="a3"  class="droppable"> </div>
+                <div id="a4"  class="droppable"> </div>
+                <div id="a5"  class="droppable"> </div>
+                <div id="a6"  class="droppable"> </div>
+                <div id="a7"  class="droppable"> </div>
+                <div id="a8"  class="droppable"> </div>
+                <div id="a9"  class="droppable"> </div>
+                <div id="a10"  class="droppable"> </div>
+                <div id="a11"  class="droppable"> </div>
+                <div id="a12"  class="droppable"> </div>
+                <div id="b1"  class="droppable"> </div>
+                <div id="b2"  class="droppable"> </div>
+                <div id="b3"  class="droppable"> </div>
+                <div id="b4"  class="droppable"> </div>
+                <div id="b5"  class="droppable"> </div>
+                <div id="b6"  class="droppable"> </div>
+                <div id="b7"  class="droppable"> </div>
+                <div id="b8"  class="droppable"> </div>
+                <div id="b9" class="droppable">  </div>
+                <div id="b10"  class="droppable"> </div>
+                <div id="b11"  class="droppable"> </div>
+                <div id="b12"  class="droppable"> </div>
+                <div id="c1"  class="droppable"> </div>
+                <div id="c2"  class="droppable"> </div>
+                <div id="c3"  class="droppable"> </div>
+                <div id="c4"  class="droppable"> </div>
+                <div id="c5"  class="droppable"> </div>
+                <div id="c6"  class="droppable"> </div>
+                <div id="c7"  class="droppable"> </div>
+                <div id="c8"  class="droppable"> </div>
+                <div id="c9"  class="droppable"> </div>
+                <div id="c10"  class="droppable"> </div>
+                <div id="c11"  class="droppable"> </div>
+                <div id="c12"  class="droppable"> </div>
+                <div id="d1"  class="droppable"> </div>
+                <div id="d2"  class="droppable"> </div>
+                <div id="d3"  class="droppable"> </div>
+                <div id="d4"  class="droppable"> </div>
+                <div id="d5"  class="droppable"> </div>
+                <div id="d6"  class="droppable"> </div>
+                <div id="d7"  class="droppable"> </div>
+                <div id="d8"  class="droppable"> </div>
+                <div id="d9"  class="droppable"> </div>
+                <div id="d10"  class="droppable"> </div>
+                <div id="d11"  class="droppable"> </div>
+                <div id="d12"  class="droppable"> </div>
+                <div id="e1"  class="droppable"> </div>
+                <div id="e2"  class="droppable"> </div>
+                <div id="e3"  class="droppable"> </div>
+                <div id="e4"  class="droppable"> </div>
+                <div id="e5"  class="droppable"> </div>
+                <div id="e6"  class="droppable"> </div>
+                <div id="e7"  class="droppable"> </div>
+                <div id="e8"  class="droppable"> </div>
+                <div id="e9"  class="droppable"> </div>
+                <div id="e10"  class="droppable"> </div>
+                <div id="e11"  class="droppable"> </div>
+                <div id="e12"  class="droppable"> </div>
             </div>
-        </div>
+         </div>
     </div>
+</div>
     <div class="col-xs-4 col-sm-3 col-md-3"  >
         <div id="userList" style="height: 290px; border : 1px solid #d5d5d5">
           <!--  <div class="userOnline">
@@ -114,10 +115,15 @@
         $(function () {
             // Reference the auto-generated proxy for the hub.  
             var chat = $.connection.chatHub;
-            // Regier clients methods
-            
+            var hub = $.connection.moveObjectHub;
+
+            $shape = $("#@User.Identity.Name");
+
+
+            // Regier clients methods      
             registerClientMethods(chat);
             
+
             // Start the connection.
             $.connection.hub.start().done(function () {
                 // when users logged in correctly
@@ -132,75 +138,193 @@
 
                 });
 
+                hub.server.connect("@User.Identity.Name")
+
+                $(".droppable").droppable({
+                    activeClass: "ui-state-hover",
+                    hoverClass: "ui-state-active",
+                    drop: function (event, ui) {
+                        insertObjectDiv(ui.draggable, this.id)
+
+
+                    }
+                });
+
+                function insertObjectDiv($item, id) {
+                    $div = $("#" + id + "");
+                    $item.appendTo($div).css({ left: 0, top: 0 });
+                    hub.server.insertobjectintoDiv($item.attr('id'), id)
+                    hub.server.especificPossition($item.attr('id'), $item.attr("class"), id)
+                }
+
             });
+           
+
+
+            //functions the the client gonna call
+
+
+
+            //functions that the server gonna call
+
+
+
+            hub.client.loadallObjects = function (allObjects) {
+
+                for (i = 0 ; i < allObjects.length; i++) {
+                    if (allObjects[i].mypossition != null) {
+                        $('#' + allObjects[i].mypossition + '').append($('<div id="' + allObjects[i].id + '" class="' + allObjects[i].cssClass + '"> </div> '))
+
+                    } else {
+                        $('.newusers').append($('<div id="' + allObjects[i].id + '" class="' + allObjects[i].cssClass + '"> </div> '))
+                    }
+                }
+
+                $('#@User.Identity.Name').draggable({
+                    revert: "invalid",
+                    drag: function () {
+                        hub.server.moveObject(this.id, this.offsetLeft, this.offsetTop || 0)
+                    }
+                })
+
+              };
+
+
+            hub.client.loadothersObjects = function (allObjects) {
+
+                for (i = 0 ; i < allObjects.length; i++) {
+                    if (allObjects[i].mypossition != null) {
+                        $('#' + allObjects[i].mypossition + '').append($('<div id="' + allObjects[i].id + '" class="' + allObjects[i].cssClass + '"> </div> '))
+
+                    } else {
+                        $('.newusers').append($('<div id="' + allObjects[i].id + '" class="' + allObjects[i].cssClass + '"> </div> '))
+                    }
+                }
+
+            };
+
+            hub.client.removeObject = function (userName) {
+
+                $('#' + userName).remove();
+
+            };
+
+
+            hub.client.newObject = function (username, css, possition) {
+                if (possition != null) {
+                    $('#' + possition + '').append($('<div id="' + username + '" class="' + css + '"> </div> '))
+
+                } else {
+                    $('.').append($('<div id="' + username + '" class="' + css + '"> </div> '))
+                }
+            }
+
+            hub.client.myObject = function (username, css) {
+
+                $('#' + username).children('#piece').append($('<div id="' + username + '" class="' + css + '"> </div> '))
+
+                $('#' + username + '').draggable({
+                    revert: "invalid",
+                    drag: function () {
+                        hub.server.moveObject(this.id, this.offsetLeft, this.offsetTop || 0)
+                    }
+                })
+
+            }
+
+            hub.client.objectMoved = function (id, x, y) {
+
+                $("#" + id + "").offset({ left: x, top: y })
+                //  $shape.css({left : x , top : y})
+            };
+
+            hub.client.objectInsertedDiv = function (idObj, idDiv) {
+
+                $object = $("#" + idObj + "");
+                $div = $("#" + idDiv + "");
+                $object.appendTo($div).css({ left: 0, top: 0 });
+
+            };
+
+
+
+
+            //----------------------------------------------
+            function registerClientMethods(chat) {
+
+                // Create a function that the hub can call back to display messages.
+                chat.client.addNewMessageToPage = function (name, message) {
+                    // Add the message to the page. 
+                    AddMessage(name, message);
+
+                };
+
+                chat.client.onUserDisconnected = function (id, userName) {
+
+                    $('#' + id).remove()
+
+                }
+                //Calls when user successfuly logged in
+                chat.client.onConnected = function (allUsers, messages) {
+
+                    for (i = 0 ; i < allUsers.length; i++) {
+                        AddUsers(allUsers[i].connectionId, allUsers[i].userName)
+                    }
+                    for (i = 0 ; i < messages.length; i++) {
+                        AddMessage(messages[i].userName, messages[i].message)
+                    }
+                };
+
+                // on new User Connected
+                chat.client.onNewUserConnected = function (id, name) {
+                    AddUsers(id, name);
+                };
+
+            }
+
+
+            //internal functions 
+
+            function AddMessage(name, message) {
+
+                $('#discussion').append('<li><strong>' + htmlEncode(name)
+                   + '</strong>: ' + htmlEncode(message) + '</li>');
+                ($('#discussion').parent()).scrollTop($('#discussion').height())
+            }
+
+            function AddUsers(id, name) {
+
+                $('#userList').append($('<div id="' + id + '" class="userOnline">'
+               + '<div style="width:40px"><img src="../Images/orderedList9.png" alt="" /></div>'
+               + '<div style="display:inline"><a href="#">' + name + '</a></div>'
+               + '<div id="piece" style="display:inline"></div>'
+               + '</div>')
+              );
+            }
+
+
+
+            // This optional function html-encodes messages for display in the page.
+            function htmlEncode(value) {
+                var encodedValue = $('<div />').text(value).html();
+                return encodedValue;
+            }
+
+
+            $("#message").keyup(function (event) {
+                if (event.keyCode == 13) {
+                    $("#sendmessage").click();
+                }
+            });
+
+
             
         });
 
       
 
-        function registerClientMethods(chat) {
+      
 
-            // Create a function that the hub can call back to display messages.
-            chat.client.addNewMessageToPage = function (name, message) {
-                // Add the message to the page. 
-                AddMessage(name, message);
-               
-            };
-
-            chat.client.onUserDisconnected = function (id, userName) {
-
-                $('#' + id).remove()
-
-            }
-            //Calls when user successfuly logged in
-            chat.client.onConnected = function (allUsers, messages) {
-
-                for (i = 0 ; i < allUsers.length; i++) {
-                    AddUsers(allUsers[i].connectionId,allUsers[i].userName)
-                }
-                for (i = 0 ; i < messages.length; i++) {
-                    AddMessage(messages[i].userName, messages[i].message)
-                }
-            };
-
-            // on new User Connected
-            chat.client.onNewUserConnected = function (id, name) {
-                AddUsers(id, name);
-            };
-
-        }
-
-        function AddMessage(name, message) {
-
-            $('#discussion').append('<li><strong>' + htmlEncode(name)
-               + '</strong>: ' + htmlEncode(message) + '</li>');
-            ($('#discussion').parent()).scrollTop($('#discussion').height())
-        }
-
-        function AddUsers(id, name) {
-           
-            $('#userList').append($('<div id="' + id + '" class="userOnline">'
-           + '<div style="width:40px"><img src="../Images/orderedList9.png" alt="" /></div>'
-           + '<div style="display:inline"><a href="#">' + name + '</a></div>'
-           + '</div>')
-          );
-        }
-
-       
-
-        // This optional function html-encodes messages for display in the page.
-        function htmlEncode(value) {
-            var encodedValue = $('<div />').text(value).html();
-            return encodedValue;
-        }
-
-        $("#message").keyup( function(event){
-        
-            if(event.keyCode == 13){
-            
-                $("#sendmessage").click();
-            }
-        }); 
         
         
     </script>
