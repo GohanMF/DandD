@@ -34,8 +34,15 @@ namespace MvcApplication1.Controllers
         {
             return View();
         }
+
         [Authorize]
         public ActionResult moveObject()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult BoardGame()
         {
             return View();
         }

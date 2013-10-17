@@ -18,13 +18,27 @@ namespace SignalHubs
            
            var id = Context.ConnectionId;
 
-           if (ConnectedUsers.Count(x => x.connectionId == id) == 0)
+           if (ConnectedUsers.Count(x => x.userName == userName) == 0)
            {
+               
+               var user_character = new allObjects();
+               var lista_objct  = new List<allObjects>();
+               lista_objct.Add(user_character);
 
-               ConnectedUsers.Add(new UserDetail { connectionId = id, userName = userName });
-               Clients.Others.onNewUserConnected(id, userName);
-               Clients.Caller.onConnected(ConnectedUsers, CurrentMessages);
-             
+
+
+               ConnectedUsers.Add(new UserDetail { connectionId = id, userName = userName , objects = lista_objct });
+               Clients.Others.onNewUserConnected(id, userName , user_character);
+               Clients.Caller.onConnected(ConnectedUsers, CurrentMessages , user_character);
+
+
+           }
+           else {
+
+                var user = ConnectedUsers.Find(x => x.userName == userName);
+                ConnectedUsers.Remove(user);
+                user.connectionId = id;
+                ConnectedUsers.Add(user);
            }
        }
 

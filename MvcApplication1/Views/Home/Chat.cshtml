@@ -2,6 +2,17 @@
     ViewBag.Title = "Chat";
 }
 
+<style>
+    .shape {
+    border-radius: 50px;
+    width:58px;
+    height:58px;
+    border: 1px solid yellow;
+    background-color : seagreen;
+    cursor: move;
+    }
+
+</style>
 <div class="row" style="height:70%">
     <div class="col-xs-8 col-sm-9 col-md-9" style="height:100%">
         <div  style="height:100%; width:100%; border:1px solid black; overflow:auto ; background-color:gray">
@@ -70,21 +81,15 @@
          </div>
     </div>
 </div>
-    <div class="col-xs-4 col-sm-3 col-md-3"  >
-        <div id="userList" style="height: 290px; border : 1px solid #d5d5d5">
-          <!--  <div class="userOnline">
-                <div style="width:40px"><img src="~/Images/orderedList9.png" alt="" /></div> <div style="display:inline"><a href="#">GohamMF</a></div>
-            </div>
-            <div  class="userOnline">
-                <div style="width:40px"><img src="~/Images/orderedList8.png" alt="" /></div><div style="display:inline"> <a href="#">Zé</a></div>
-            </div>
-            <div class="userOnline">
-                <div style="width:40px"><img src="~/Images/orderedList7.png" alt="" /></div><div style="display:inline" ><a href="#">Antonio Manuel dos Santos zezinhos</a></div>
-            </div> -->
-        </div>
-    </div> 
+<div class="col-xs-4 col-sm-3 col-md-3"  >
+    <div id="userList" style="height: 290px; border : 1px solid #d5d5d5">
+        <!--  <div class="userOnline">
+            <div style="width:40px"><img src="~/Images/orderedList9.png" alt="" /></div> <div style="display:inline"><a href="#">GohamMF</a></div>
+        </div>  -->
+    </div>
+</div> 
       
-</div>
+ 
 <div class="row clear">
     <div class="col-sm-6">
         cenas dads etc
@@ -115,7 +120,7 @@
         $(function () {
             // Reference the auto-generated proxy for the hub.  
             var chat = $.connection.chatHub;
-            var hub = $.connection.moveObjectHub;
+
 
             $shape = $("#@User.Identity.Name");
 
@@ -128,6 +133,7 @@
             $.connection.hub.start().done(function () {
                 // when users logged in correctly
                 chat.server.connect('@User.Identity.Name')
+
                 $('#sendmessage').click(function () {
                     // Call the Send method on the hub. 
                     var msg = $('#message').val();
@@ -169,7 +175,7 @@
 
 
 
-            hub.client.loadallObjects = function (allObjects) {
+            hub.clmient.loadallObjects = function (allObjects) {
 
                 for (i = 0 ; i < allObjects.length; i++) {
                     if (allObjects[i].mypossition != null) {
